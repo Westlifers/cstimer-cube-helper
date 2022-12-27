@@ -1,0 +1,43 @@
+{
+    "name": "虚拟魔方助手",
+    "version": "1.0",
+    "description": "cstimer虚拟魔方助手",
+    "manifest_version": 3,
+    "background":{
+        "service_worker": "js/background.js"
+    },
+    "permissions":[	
+		"tabs"
+		,"debugger"		
+	],
+    "content_scripts": [
+        {
+            "js": [
+                "js/jquery-3.6.3.min.js",
+                "js/cube/cube.js",
+                "js/cube/solve.js",
+                "js/main.js"
+            ],
+            "matches": [
+                "https://*.cstimer.net/"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+        "16": "/img/logo.png",
+        "32": "/img/logo.png",
+        "48": "/img/logo.png",
+        "128": "/img/logo.png"
+        },
+        "default_title": "cstimer虚拟魔方助手"
+    },
+    "icons": {
+        "16": "/img/logo.png",
+        "32": "/img/logo.png",
+        "48": "/img/logo.png",
+        "128": "/img/logo.png"
+    }
+}
