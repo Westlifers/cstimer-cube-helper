@@ -1,9 +1,57 @@
 <html>
     <head>
-        <title>hello world</title>
+        <title>popup</title>
         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="css/popup.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <script src="js/jquery-3.6.3.min.js"></script>
+        <script src="js/nice-select.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/popup.js"></script>
     </head>
-    <body style="width: 200px;height:200px;">
-        <h1 id="message">你好</h1>
+    <body>
+        <div class="browser-plugin">
+            <div class="browser-plugin__header">
+                <p>cstimer虚拟魔方助手</p>
+            </div>
+            <div class="browser-plugin__main is-active">
+                <i class="icon-internet"></i>
+                <p>cstimer虚拟魔方助手<br>提供更优质的虚拟魔方体验
+                </p>
+            </div>
+            <div class="browser-plugin__list">
+                <ul class="collapsible">
+                    <li>一键复原</li>
+                    <li>最少步复原公式</li>
+                    <li>cfop复原详解<!-- <span class="shortcut-key">Shift+D</span></li> -->
+                    <li>xcross解法</li>
+                    <li style="padding-left: 0;">
+                        <div class="collapsible-header">设置</div>
+                        <div class="collapsible-body" style="background-color: #ffffff;">
+                            <ul>
+                                <li style="padding-right: 5%; height: 100px;">
+                                    <label for="tps">TPS</label>
+                                    <select class="wide" name="tps" id="tps">
+                                        <option value="3">3</option>
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </li>
+                                <li style="padding-right: 5%; height: 100px;">
+                                    <label for="method">复原方法</label>
+                                    <select class="wide" name="method" id="method">
+                                        <option value="3">3</option>
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>

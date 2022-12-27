@@ -1,5 +1,5 @@
 Cube.initSolver()
-let port = chrome.runtime.connect({ name: "message" });
+let port = chrome.runtime.connect({ name: "message" }); // 与后台建立message连接
 var scramble = ""
 // 键位
 const keys = {
@@ -25,16 +25,8 @@ function scrambleChange(){
 // 每当按键或鼠标点击，都重新获取当前打乱
 $(document).on("click", scrambleChange)
 
-
-
-
-// 双击测试
+// 双击解魔方
 $(document).on("dblclick", autoSolve)
-
-
-
-
-
 
 // 给出当前打乱的解法
 function solveCurrentCube(){

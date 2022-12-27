@@ -1,14 +1,14 @@
 {
     "name": "虚拟魔方助手",
-    "version": "1.0",
+    "version": "1.1",
     "description": "cstimer虚拟魔方助手",
     "manifest_version": 3,
     "background":{
         "service_worker": "js/background.js"
     },
     "permissions":[	
-		"tabs"
-		,"debugger"		
+		"tabs",
+		"debugger"		
 	],
     "content_scripts": [
         {
