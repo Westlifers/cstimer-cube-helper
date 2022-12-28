@@ -22,8 +22,7 @@
             </div>
             <div class="browser-plugin__list">
                 <ul class="collapsible">
-                    <li>一键复原</li>
-                    <li>最少步复原公式</li>
+                    <li id="solve">一键复原</li>
                     <li>cfop复原详解<!-- <span class="shortcut-key">Shift+D</span></li> -->
                     <li>xcross解法</li>
                     <li style="padding-left: 0;">
@@ -36,14 +35,15 @@
                                         <option value="3">3</option>
                                         <option value="5">5</option>
                                         <option value="10">10</option>
+                                        <option value="20">20</option>
                                     </select>
                                 </li>
                                 <li style="padding-right: 5%; height: 100px;">
                                     <label for="method">复原方法</label>
                                     <select class="wide" name="method" id="method">
-                                        <option value="3">3</option>
-                                        <option value="5">5</option>
-                                        <option value="10">10</option>
+                                        <option value="cfop">cfop</option>
+                                        <option value="roux">桥式</option>
+                                        <option value="min">最少步</option>
                                     </select>
                                 </li>
                             </ul>

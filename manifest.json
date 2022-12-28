@@ -1,6 +1,6 @@
 {
     "name": "虚拟魔方助手",
-    "version": "1.1",
+    "version": "1.2",
     "description": "cstimer虚拟魔方助手",
     "manifest_version": 3,
     "background":{
@@ -8,7 +8,8 @@
     },
     "permissions":[	
 		"tabs",
-		"debugger"		
+		"debugger",
+        "storage"	
 	],
     "content_scripts": [
         {

@@ -6,3 +6,6 @@
 
 # V1.1
 简单完成了popup菜单样式
+
+# V1.2
+完成了popup菜单设置tps和popup一键复原

@@ -22,25 +22,23 @@ function scrambleChange(){
     scramble = $("#scrambleTxt div").text()
 }
 
-// 每当按键或鼠标点击，都重新获取当前打乱
-$(document).on("click", scrambleChange)
-
 // 双击解魔方
 $(document).on("dblclick", autoSolve)
 
-// 给出当前打乱的解法
+// 更新当前打乱并给出当前打乱的解法
 function solveCurrentCube(){
+    scrambleChange()
     const cube = new Cube()
     cube.move(scramble)
     return cube.solve()
 }
 
-function ipt(str, i) {    
+function ipt(str, i, time) {    
     port.postMessage({ action: "input", text: str[i] });
     if (i < str.length - 1) {
         setTimeout(function () {
-            ipt(str,++i);
-        }, 50);                          // 50为按键间隔时间
+            ipt(str, ++i, time);
+        }, time);                          // time为按键间隔时间
     }
 }
 
@@ -59,14 +57,21 @@ function autoSolve(){
     }
     // 键位转回字符串
     solveSteps = solveSteps.join("")
-    // 逐步复原
-    setTimeout(function () { 
-        ipt(solveSteps,0); 
-    }, 500);
-    
+    // 读取配置并复原
+    console.log("读取配置中......")
+    chrome.storage.local.get("tps", function (item){
+        let tps = item.tps
+        console.log(`配置已读取，tps：${tps}，每次操作间隔：${(1/tps) * 1000}`)
+        ipt(solveSteps, 0, 1/tps * 1000); 
+    })
 }
 
-
+// 监听solve信号，得到信号就复原
+chrome.runtime.onMessage.addListener(function(request, _sender, _sendResponse) {
+    if (request.solve) {
+        autoSolve();
+    }
+});
 
 
 
