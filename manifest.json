@@ -1,6 +1,6 @@
 {
     "name": "虚拟魔方助手",
-    "version": "1.2",
+    "version": "1.3",
     "description": "cstimer虚拟魔方助手",
     "manifest_version": 3,
     "background":{

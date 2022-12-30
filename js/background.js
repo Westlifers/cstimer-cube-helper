@@ -10,17 +10,22 @@ chrome.runtime.onConnect.addListener(function (port) {
         if(action=="click"){
             let x = msg.coordinate.x;
             let y = msg.coordinate.y;          
-            handleDispatchMouseEventClick(x,y,tabId) 
+            handleDispatchStrKeyEvent(x, y, tabId) 
         }
         if(action=="input"){
             let text=msg.text;
-            handleDispatchKeyEventInput(text,tabId);
+            console.log("读取配置中......")
+            chrome.storage.local.get("tps", function (item){
+                let tps = item.tps
+                console.log(`配置已读取，tps：${tps}，每次操作间隔：${(1/tps) * 1000}`)
+                handleDispatchStrKeyEvent(text, 0, 0.5/tps * 1000, tabId)
+            })
         }
     });
 });
 
 // 坐标点击
-function handleDispatchMouseEventClick(x,y,tabId){
+function handleDispatchMouseEventClick(x, y, tabId){
     chrome.debugger.attach({ tabId: tabId }, "1.3");  
     chrome.debugger.sendCommand(
         { tabId: tabId },
@@ -40,7 +45,7 @@ function handleDispatchMouseEventClick(x,y,tabId){
 }
 
 // 键盘输入单字输入
-function handleDispatchKeyEventInput(val,tabId){
+function handleDispatchKeyEventInput(val, tabId){
     chrome.debugger.attach({ tabId: tabId }, "1.3");
     chrome.debugger.sendCommand(
         { tabId: tabId},            
@@ -57,4 +62,14 @@ function handleDispatchKeyEventInput(val,tabId){
             chrome.debugger.detach({tabId:tabId});
         }
     ); 
+}
+
+// 键盘输入字符串
+function handleDispatchStrKeyEvent(str, i, time, tabId){
+    handleDispatchKeyEventInput(str[i], tabId)
+    if (i < str.length - 1){
+        setTimeout(function (){
+            handleDispatchStrKeyEvent(str, ++i, time, tabId)
+        }, time)
+    }
 }
